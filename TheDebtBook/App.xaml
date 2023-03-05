@@ -4,6 +4,22 @@
              xmlns:local="clr-namespace:TheDebtBook"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="textBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="FontSize" Value="45pt"></Setter>
+            <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="20pt"></Setter>
+            <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style x:Key="labelStyle" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="45pt"></Setter>
+            <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
     </Application.Resources>
 </Application>
