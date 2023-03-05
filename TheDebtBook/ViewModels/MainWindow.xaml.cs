@@ -12,17 +12,46 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Prism.Commands;
+using Prism.Mvvm;
+using TheDebtBook.Views;
+using TheDebtBook.Models;
 
-namespace TheDebtBook
+
+
+namespace TheDebtBook.ViewModels
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : BindableBase
     {
         public MainWindow()
         {
-            InitializeComponent();
+
+        }
+
+        private DelegateCommand addButtonCommand;
+
+        public DelegateCommand AddButtonCommand =>
+            addButtonCommand ?? (addButtonCommand = new DelegateCommand(ExecuteAddCommand));
+
+        void ExecuteAddCommand()
+        {
+            var addNewDeptor = new Debtor();
+
+            var vm = new AddDebtorViewModel();
+            MessageBox.Show("vre");
+            var dialog = new AddDebtorView()
+            {
+                DataContext = vm
+            };
+            if (dialog.ShowDialog() == true)
+            {
+                //_debtors.Add(addNewDeptor);
+                //_currentDebtor = addNewDeptor;
+                MessageBox.Show("vre");
+            }
         }
     }
 }
