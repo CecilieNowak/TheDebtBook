@@ -4,6 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="AddDebtor" Height="450" Width="800">
-    <Grid />
+        Title="AddDebtor" Height="450" Width="500">
+
+    <Grid>
+<Grid.RowDefinitions>
+    <RowDefinition Height="*"/>
+    <RowDefinition Height="*"/>
+    <RowDefinition Height="*"/>
+    <RowDefinition Height="*"/>
+
+
+        </Grid.RowDefinitions>
+    </Grid>
 </Window>
