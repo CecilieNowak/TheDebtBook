@@ -2,10 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TheDebtBook"
-             StartupUri="MainWindow.xaml">
+             StartupUri="/Views/MainWindow.xaml">
     <Application.Resources>
         <Style x:Key="textBoxStyle" TargetType="{x:Type TextBox}">
-            <Setter Property="FontSize" Value="45pt"></Setter>
+            <Setter Property="FontSize" Value="20pt"></Setter>
             <Setter Property="FontFamily" Value="Times New Roman"></Setter>
             <Setter Property="FontWeight" Value="Bold"></Setter>
         </Style>
@@ -20,6 +20,11 @@
             <Setter Property="FontSize" Value="45pt"></Setter>
             <Setter Property="FontFamily" Value="Times New Roman"></Setter>
             <Setter Property="FontWeight" Value="Bold"></Setter>
+        </Style>
+
+        <Style x:Key="labelStyleSmall" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="20pt"></Setter>
+            <Setter Property="FontFamily" Value="Times New Roman"></Setter>
         </Style>
     </Application.Resources>
 </Application>

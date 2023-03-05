@@ -12,8 +12,14 @@
     <RowDefinition Height="*"/>
     <RowDefinition Height="*"/>
     <RowDefinition Height="*"/>
+</Grid.RowDefinitions>
+        <Label Grid.Row="0" 
+               Grid.RowSpan="2" 
+               Content="Add Debtor" 
+               Margin ="5"
+               Style="{StaticResource labelStyle}"></Label>
+        <Label Grid.Row="1"
+               Grid></Label>
 
-
-        </Grid.RowDefinitions>
     </Grid>
 </Window>
