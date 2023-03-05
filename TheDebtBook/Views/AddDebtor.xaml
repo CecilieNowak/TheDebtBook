@@ -7,19 +7,57 @@
         Title="AddDebtor" Height="450" Width="500">
 
     <Grid>
-<Grid.RowDefinitions>
-    <RowDefinition Height="*"/>
-    <RowDefinition Height="*"/>
-    <RowDefinition Height="*"/>
-    <RowDefinition Height="*"/>
-</Grid.RowDefinitions>
-        <Label Grid.Row="0" 
-               Grid.RowSpan="2" 
-               Content="Add Debtor" 
-               Margin ="5"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Add Debtor" 
                Style="{StaticResource labelStyle}"></Label>
-        <Label Grid.Row="1"
-               Grid></Label>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.RowSpan="2">
+            <Label Content ="Name: "
+                   Style="{StaticResource labelStyleSmall}"></Label>
+            <TextBox Name="NameTextbox" 
+                     VerticalAlignment="Top"
+                     Margin="5"
+                     Width="300"
+                     Height="40"
+                     Style="{StaticResource ResourceKey=textBoxStyle}"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.RowSpan="2">
+            <Label 
+                Content="Value: "
+                Style="{StaticResource ResourceKey=labelStyleSmall}">
+            </Label>
+            <TextBox Name="Valuebox" 
+                     VerticalAlignment="Top"
+                     Margin="5"
+                     Width="300"
+                     Height="40"
+                     Style="{StaticResource ResourceKey=textBoxStyle}"></TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="SaveButton"
+                    Content="Save"
+                    Margin="5"
+                    Width="100"
+                    Height="40"
+                    Style ="{StaticResource ResourceKey=buttonStyle}"></Button>
+            <Button Name="CancelButton"
+                    Content="Cancel"
+                    Margin="5"
+                    Width="100"
+                    Height="40"
+                    Style ="{StaticResource ResourceKey=buttonStyle}"></Button>
+
+
+
+</StackPanel>
+
 
     </Grid>
 </Window>
