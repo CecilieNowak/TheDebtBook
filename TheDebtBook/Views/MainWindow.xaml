@@ -30,6 +30,15 @@
                 Margin="40,20"
                 VerticalAlignment="Top"
                 Style="{StaticResource ResourceKey=buttonStyle}"/>
+        <DataGrid 
+            Name ="DataGridDebtor"
+            Grid.Column="0"
+            Grid.Row="1"
+            Margin="10"
+            IsSynchronizedWithCurrentItem="True">
+        </DataGrid>
+
+
     </Grid>
 
 </Window>
