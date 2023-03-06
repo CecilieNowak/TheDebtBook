@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using System;
+using Prism.Mvvm;
 using TheDebtBook.Models;
 
 namespace TheDebtBook.ViewModels
@@ -8,10 +9,38 @@ namespace TheDebtBook.ViewModels
     /// </summary>
     public partial class AddDebtorViewModel : BindableBase
     {
-        private Debtor _currentDebtor;
         public AddDebtorViewModel(Debtor currentDebtor)
         {
-            _currentDebtor = currentDebtor;
+            CurrentDebtor = currentDebtor;
+        }
+
+        private Debtor _currentDebtor;
+
+        public Debtor CurrentDebtor
+        {
+            get { return _currentDebtor; }
+            set
+            {
+                SetProperty(ref _currentDebtor, value);
+            }
+        }
+
+        public bool ValidInput
+        {
+            get
+            {
+                bool validInput = true; //TODO Behøver den sættes til true?
+                if (string.IsNullOrWhiteSpace(CurrentDebtor.Name))
+                {
+                    validInput = false;
+                }
+
+                if (string.IsNullOrWhiteSpace(Convert.ToString(CurrentDebtor.Value)))
+                {
+                    validInput = false;
+                }
+                return validInput;
+            }
         }
     }
 }

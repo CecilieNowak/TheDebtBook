@@ -47,13 +47,13 @@
                     Margin="5"
                     Width="100"
                     Height="40"
-                    Style ="{StaticResource ResourceKey=buttonStyle}"></Button>
+                    Style ="{StaticResource ResourceKey=buttonStyle}" Click="SaveButton_Click"></Button>
             <Button Name="CancelButton"
                     Content="Cancel"
                     Margin="5"
                     Width="100"
                     Height="40"
-                    Style ="{StaticResource ResourceKey=buttonStyle}"></Button>
+                    Style ="{StaticResource ResourceKey=buttonStyle}" Click="CancelButton_Click"></Button>
 
 
 

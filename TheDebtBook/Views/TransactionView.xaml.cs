@@ -11,18 +11,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using TheDebtBook.Views;
-using TheDebtBook.Models;
+using TheDebtBook.ViewModels;
 
-namespace TheDebtBook.ViewModels
+namespace TheDebtBook.Views
 {
     /// <summary>
-    /// Interaction logic for Transactions.xaml
+    /// Interaction logic for TransactionView.xaml
     /// </summary>
-    public partial class Transactions : Window
+    public partial class TransactionView : Window
     {
-        public Transactions()
+        public TransactionView()
         {
+            InitializeComponent();
         }
     }
 }
