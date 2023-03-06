@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Prism.Mvvm;
 using TheDebtBook.Models;
 
 namespace TheDebtBook.Models
 {
-    internal class Debtor
+    public class Debtor : BindableBase
     {
+        public Debtor()
+        {
+
+        }
     }
 }

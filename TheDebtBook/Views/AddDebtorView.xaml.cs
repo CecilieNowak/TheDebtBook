@@ -11,19 +11,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Prism.Mvvm;
-using TheDebtBook.Models;
+using TheDebtBook.ViewModels;
 
 namespace TheDebtBook.Views
 {
     /// <summary>
-    /// Interaction logic for AddDebtorViewModel.xaml
+    /// Interaction logic for AddDebtorView.xaml
     /// </summary>
-    public partial class AddDebtorViewModel : BindableBase
+    public partial class AddDebtorView : Window
     {
-        public AddDebtorViewModel()
+        public AddDebtorView()
         {
-            
+            InitializeComponent();
         }
     }
 }

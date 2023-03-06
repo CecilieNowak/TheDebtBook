@@ -31,8 +31,8 @@
                 Margin="40,20"
                 VerticalAlignment="Top"
                 Style="{StaticResource ResourceKey=buttonStyle}"
-                Command ="{Binding Path=AddButtonCommand}"/>
-                
+                Command ="{Binding AddButtonCommand}"/>
+
         <DataGrid 
             Name ="DataGridDebtor"
             Grid.Column="0"
