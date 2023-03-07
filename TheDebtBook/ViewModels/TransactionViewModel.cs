@@ -56,9 +56,8 @@ namespace TheDebtBook.ViewModels
 
         private void AddValueCommandExecute()
         {
-            Debts.Add(new Debt() {DebtValue = CurrentDebtor.Value, Date = DateTime.Now.ToShortDateString()});
-            CurrentDebtor.TransactionDebts.Add(new Debt()
-                { DebtValue = CurrentDebtor.Value, Date = DateTime.Now.ToShortDateString() });
+            Debts.Add(new Debt() { DebtValue = CurrentDebtor.Value, Date = DateTime.Now.ToShortDateString()});
+            CurrentDebtor.TransactionDebts.Add(new Debt() { DebtValue = CurrentDebtor.Value, Date = DateTime.Now.ToShortDateString() });
             CurrentDebtor.Value = 0;
         }
 

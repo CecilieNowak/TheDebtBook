@@ -15,7 +15,7 @@ namespace TheDebtBook.Models
 
         public Debt()
         {
-            _date = DateTime.Now.ToString();
+            _date = DateTime.Now.ToShortDateString();
         }
 
         public Debt (int value, string date, int debtValue)

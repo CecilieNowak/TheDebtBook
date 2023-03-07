@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mwwm="http://prismlibrary.com/"
         xmlns:local="clr-namespace:TheDebtBook.ViewModels"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         mwwm:ViewModelLocator.AutoWireViewModel="true"
         Title="Transactions" Height="450" Width="800"
+        FocusManager.FocusedElement="{Binding ElementName=TextBoxAddValue}"
         Background="{StaticResource ResourceKey=BackgroundBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -27,7 +29,10 @@
             Name ="DataGridDebts"
             Grid.RowSpan="5"
             Margin="10"
-            IsSynchronizedWithCurrentItem="True">
+            IsSynchronizedWithCurrentItem="True"
+            ItemsSource="{Binding Path=Debts}"
+            SelectedItem="{Binding Path=CurrentDebtor}"
+            SelectedIndex="{Binding Path=CurrentIndex}">
         </DataGrid>
 
         <Button
@@ -39,9 +44,11 @@
         </Button>
 
         <TextBox
+            Name="TextBoxAddValue"
             Grid.Column="1"
             Margin="10"
-            Style="{StaticResource ResourceKey=textBoxStyle}">
+            Style="{StaticResource ResourceKey=textBoxStyle}"
+            Text="{Binding Path=CurrentDebtor.Value}">
         </TextBox>
 
         <Button
@@ -49,7 +56,10 @@
             Grid.Row="1"
             Margin="100,15,100,0"
             Content="Add value"
-            Style="{StaticResource ResourceKey=buttonStyle}" Height="43" VerticalAlignment="Top"/>
-
+            Style="{StaticResource ResourceKey=buttonStyle}" 
+            Command="{Binding AddValueCommand}" 
+            Height="43" 
+            VerticalAlignment="Top"/>
+            
     </Grid>
 </Window>
