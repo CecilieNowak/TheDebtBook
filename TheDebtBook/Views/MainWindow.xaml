@@ -3,12 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheDebtBook.Views"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="MainWindow" Height="450" Width="700">
     <DockPanel>
-
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" Command="{Binding NewFileCommand}"/>
@@ -21,7 +22,7 @@
         <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.2*"/>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -52,11 +53,19 @@
             ItemsSource="{Binding Path= Debtors}"
             SelectedItem="{Binding Path=CurrentDebtor}"
             IsReadOnly="True"
-            >
+            CanUserAddRows="False"
+            CanUserDeleteRows="False">
 
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="Name" Width ="70" Binding="{Binding Name}"/>
-            <DataGridTextColumn Header="Debt" Width="70" Binding="{Binding TotalDebt}"/>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseClick">
+                        <prism:InvokeCommandAction Command="{Binding ShowDebtCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Width ="70" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Debt" Width="70" Binding="{Binding TotalDebt}"/>
         </DataGrid.Columns>
         </DataGrid>
 

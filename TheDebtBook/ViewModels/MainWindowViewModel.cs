@@ -64,6 +64,7 @@ namespace TheDebtBook.ViewModels
             }
         }
 
+
         private DelegateCommand addButtonCommand;
 
         public DelegateCommand AddButtonCommand =>
@@ -100,7 +101,8 @@ namespace TheDebtBook.ViewModels
 
             var dialog = new TransactionView()
             {
-                DataContext = vm
+                DataContext = vm,
+                Owner = Application.Current.MainWindow
 
             };
             if (dialog.ShowDialog() == true)
@@ -110,6 +112,7 @@ namespace TheDebtBook.ViewModels
             }
         }
 
+        #region File 
         private DelegateCommand? newFileCommand;
 
         public DelegateCommand NewFileCommand =>
@@ -219,6 +222,7 @@ namespace TheDebtBook.ViewModels
         {
             return (fileName != "") && (Debtors.Count > 0);
         }
+        #endregion
 
     }
 }

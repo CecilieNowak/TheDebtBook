@@ -16,6 +16,8 @@ namespace TheDebtBook.ViewModels
         private ObservableCollection<Debt> _debts;
         private Debtor _currentDebtor;
 
+        public TransactionViewModel() {}
+
         public TransactionViewModel(Debtor debtor)
         {
             _debts = new ObservableCollection<Debt>();
