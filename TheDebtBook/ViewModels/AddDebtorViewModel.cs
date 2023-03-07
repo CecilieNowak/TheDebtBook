@@ -44,6 +44,21 @@ namespace TheDebtBook.ViewModels
             CurrentDebtor.TotalDebt = CurrentDebtor.TransactionDebts.Sum(x => x.DebtValue);
         }
 
+        bool CanSaveButtonCommand()
+        {
+            return ValidInput;
+        }
+
+
+        private DelegateCommand? _cancelButtonCommand;
+        public DelegateCommand? CancelButtonCommand =>
+            _cancelButtonCommand ?? (_cancelButtonCommand = new DelegateCommand(CancelButtonCommandExecute));
+
+        private void CancelButtonCommandExecute()
+        {
+            // Behind code
+        }
+
         public bool ValidInput
         {
             get
