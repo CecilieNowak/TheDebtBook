@@ -32,10 +32,12 @@
 
         <Button
             Grid.Row="6"
+            Name ="CloseBtn"
             Margin="100,15"
             Content="Close"
             Style="{StaticResource ResourceKey=buttonStyle}"
-            Command="{Binding CloseCommand}">
+            Command="{Binding CloseCommand}"
+            IsCancel="True" Click="CloseBtn_Click">
 
         </Button>
 
