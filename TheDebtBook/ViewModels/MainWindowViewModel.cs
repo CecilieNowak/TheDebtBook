@@ -97,12 +97,11 @@ namespace TheDebtBook.ViewModels
         void ExecuteShowDebtCommand()
         {
             var localDebtor = CurrentDebtor.Clone();
-            var vm = new TransactionViewModel(localDebtor);
 
             var dialog = new TransactionView()
             {
-                DataContext = vm,
-                Owner = Application.Current.MainWindow
+               DataContext = new TransactionViewModel(localDebtor),
+            Owner = Application.Current.MainWindow
 
             };
             if (dialog.ShowDialog() == true)

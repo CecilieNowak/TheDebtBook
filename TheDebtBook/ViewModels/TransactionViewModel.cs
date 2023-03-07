@@ -21,11 +21,9 @@ namespace TheDebtBook.ViewModels
             _debts = new ObservableCollection<Debt>();
 
             CurrentDebtor = debtor;
-
-            //This method adds the items from transactionDebt collection to the debtscollection
+            
             AddValueToList();
 
-            //Resets the current value for valueTXB
             CurrentDebtor.Value = 0;
         }
 

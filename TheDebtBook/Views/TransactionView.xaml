@@ -31,7 +31,7 @@
             Margin="10"
             IsSynchronizedWithCurrentItem="True"
             ItemsSource="{Binding Path=DebtsCollection}"
-            SelectedItem="{Binding Path=CurrentDebtor}"
+            SelectedItem="{Binding Path=CurrentDebt}"
             SelectedIndex="{Binding Path=CurrentIndex}">
         </DataGrid>
 
