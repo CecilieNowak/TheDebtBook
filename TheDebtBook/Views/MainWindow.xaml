@@ -53,7 +53,8 @@
             IsSynchronizedWithCurrentItem="True"
             ItemsSource="{Binding Path= Debtors}"
             SelectedItem="{Binding Path=CurrentDebtor}"
-            IsReadOnly="True">
+            IsReadOnly="True"
+            AutoGenerateColumns="False">
 
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseClick">
@@ -63,8 +64,8 @@
             
             
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width ="70" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Debt" Width="70" Binding="{Binding TotalDebt}"/>
+                <DataGridTextColumn Header="Name" Width ="70" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Debt" Width="70" Binding="{Binding Path=TotalDebt}"/>
         </DataGrid.Columns>
         </DataGrid>
 
