@@ -42,16 +42,6 @@ namespace TheDebtBook.ViewModels
             }
         }
 
-        ObservableCollection<Debtor> _debtors;
-
-        public ObservableCollection<Debtor> Debtors
-        {
-            get { return _debtors; }
-            set
-            {
-                SetProperty(ref _debtors, value);
-            }
-        }
 
         string fileName = "";
         public string Filename
