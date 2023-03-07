@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:TheDebtBook.Views"
              StartupUri="/Views/MainWindow.xaml">
     <Application.Resources>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="#FFC2D1C1"/>
+        
         <Style x:Key="textBoxStyle" TargetType="{x:Type TextBox}">
             <Setter Property="FontSize" Value="20pt"></Setter>
             <Setter Property="FontFamily" Value="Times New Roman"></Setter>
