@@ -58,7 +58,8 @@
                     Margin="5"
                     Width="100"
                     Height="40"
-                    Style ="{StaticResource ResourceKey=buttonStyle}" Click="CancelButton_Click"></Button>
+                    Style ="{StaticResource ResourceKey=buttonStyle}" Click="CancelButton_Click"
+                    Command="{Binding CancelButtonCommand}"></Button>
 
 
 

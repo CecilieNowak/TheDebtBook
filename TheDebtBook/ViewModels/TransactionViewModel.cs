@@ -62,5 +62,14 @@ namespace TheDebtBook.ViewModels
             CurrentDebtor.Value = 0;
         }
 
+        private DelegateCommand? _closeCommand;
+        public DelegateCommand? CloseCommand =>
+            _closeCommand ?? (_closeCommand = new DelegateCommand(CloseCommandExecute));
+
+        private void CloseCommandExecute()
+        {
+            _currentDebtor.TotalDebt = _debts.Sum(x => x.DebtValue);
+        }
+
     }
 }

@@ -34,7 +34,8 @@
             Grid.Row="6"
             Margin="100,15"
             Content="Close"
-            Style="{StaticResource ResourceKey=buttonStyle}">
+            Style="{StaticResource ResourceKey=buttonStyle}"
+            Command="{Binding CloseCommand}">
 
         </Button>
 
