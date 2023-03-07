@@ -42,11 +42,43 @@ namespace TheDebtBook.ViewModels
             }
         }
 
+        ObservableCollection<Debtor> _debtors;
+
+        public ObservableCollection<Debtor> Debtors
+        {
+            get { return _debtors; }
+            set
+            {
+                SetProperty(ref _debtors, value);
+            }
+        }
+
+        string fileName = "";
+        public string Filename
+        {
+            get { return fileName; }
+            set
+            {
+                SetProperty(ref fileName, value);
+            }
+        }
+
+        private bool dirty = false;
+        public bool Dirty
+        {
+            get { return dirty; }
+            set
+            {
+                SetProperty(ref dirty, value);
+            }
+        }
+
         private DelegateCommand addButtonCommand;
 
         public DelegateCommand AddButtonCommand =>
             addButtonCommand ?? (addButtonCommand = new DelegateCommand(ExecuteAddCommand));
 
+        
         void ExecuteAddCommand()
         {
             var addNewDebtor = new Debtor();
@@ -84,6 +116,24 @@ namespace TheDebtBook.ViewModels
             {
                 _currentDebtor.TotalDebt = localDebtor.TotalDebt;
                 _currentDebtor.TransactionDebts = localDebtor.TransactionDebts;
+            }
+        }
+
+        private DelegateCommand? newFileCommand;
+
+        public DelegateCommand NewFileCommand =>
+            newFileCommand ?? (newFileCommand = new DelegateCommand(NewFileCommandExecute));
+
+        void NewFileCommandExecute()
+        {
+            MessageBoxResult res = MessageBox.Show("Any unsaved data will be lost, are you sure want to continue?", "Warning",
+                MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            if (res == MessageBoxResult.Yes)
+            {
+                Debtors.Clear();
+                Filename = string.Empty;
+                Dirty = false;
+                
             }
         }
     }

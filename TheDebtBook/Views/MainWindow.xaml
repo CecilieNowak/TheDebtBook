@@ -7,8 +7,18 @@
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="MainWindow" Height="450" Width="700">
+    <DockPanel>
 
-    <Grid>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Command="{Binding NewFileCommand}"/>
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
+                <MenuItem Header="_Save as"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -52,5 +62,5 @@
 
 
     </Grid>
-
+    </DockPanel>
 </Window>
