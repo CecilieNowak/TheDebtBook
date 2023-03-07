@@ -57,7 +57,7 @@
             AutoGenerateColumns="False">
 
                 <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseClick">
+                    <i:EventTrigger EventName="MouseDoubleClick">
                         <prism:InvokeCommandAction Command="{Binding ShowDebtCommand}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
