@@ -13,26 +13,30 @@ namespace TheDebtBook.ViewModels
 {
     internal class TransactionViewModel : BindableBase
     {
-        private ObservableCollection<Debt> _debts;
-        private Debtor _currentDebtor;
 
-        public TransactionViewModel() {}
+        public TransactionViewModel() { }
 
         public TransactionViewModel(Debtor debtor)
         {
             _debts = new ObservableCollection<Debt>();
+
             CurrentDebtor = debtor;
+
+            //This method adds the items from transactionDebt collection to the debtscollection
             AddValueToList();
+
+            //Resets the current value for valueTXB
             CurrentDebtor.Value = 0;
         }
 
-        private void AddValueToList()
+        private ObservableCollection<Debt> _debts;
+        public ObservableCollection<Debt> DebtsCollection
         {
-            foreach (var item in CurrentDebtor.TransactionDebts)
-            {
-                _debts.Add(new Debt() {Date = item.Date, DebtValue = item.DebtValue});
-            }
+            get { return _debts; }
+            set { SetProperty(ref _debts, value); }
         }
+
+        Debtor _currentDebtor;
 
         public Debtor CurrentDebtor
         {
@@ -43,23 +47,29 @@ namespace TheDebtBook.ViewModels
             }
         }
 
-        public ObservableCollection<Debt> Debts
-        {
-            get { return _debts; }
-            set { SetProperty(ref _debts, value); }
-        }
-
         private DelegateCommand? _addValueCommand;
-
         public DelegateCommand? AddValueCommand =>
             _addValueCommand ?? (_addValueCommand = new DelegateCommand(AddValueCommandExecute));
 
         private void AddValueCommandExecute()
         {
-            Debts.Add(new Debt() { DebtValue = CurrentDebtor.Value, Date = DateTime.Now.ToShortDateString()});
+
+            DebtsCollection.Add(new Debt() { DebtValue = CurrentDebtor.Value, Date = DateTime.Now.ToShortDateString() });
+
             CurrentDebtor.TransactionDebts.Add(new Debt() { DebtValue = CurrentDebtor.Value, Date = DateTime.Now.ToShortDateString() });
+
             CurrentDebtor.Value = 0;
         }
+
+
+        private void AddValueToList()
+        {
+            foreach (var item in CurrentDebtor.TransactionDebts)
+            {
+                _debts.Add(new Debt() { Date = item.Date, DebtValue = item.DebtValue });
+            }
+        }
+
 
         private DelegateCommand? _closeCommand;
         public DelegateCommand? CloseCommand =>

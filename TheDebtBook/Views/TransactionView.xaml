@@ -60,7 +60,7 @@
             Margin="100,15,100,0"
             Content="Add value"
             Style="{StaticResource ResourceKey=buttonStyle}" 
-            Command="{Binding AddValueCommand}" 
+            Command="{Binding AddValueCommand}" Click="AddValueTxb_Click"
             Height="43" 
             VerticalAlignment="Top"/>
             

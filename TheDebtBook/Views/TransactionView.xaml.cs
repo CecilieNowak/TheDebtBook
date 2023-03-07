@@ -25,6 +25,11 @@ namespace TheDebtBook.Views
             InitializeComponent();
         }
 
+        private void AddValueTxb_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxAddValue.Focus();
+        }
+
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
             var vm = DataContext as TransactionViewModel;
