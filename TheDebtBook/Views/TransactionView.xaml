@@ -30,7 +30,7 @@
             Grid.RowSpan="5"
             Margin="10"
             IsSynchronizedWithCurrentItem="True"
-            ItemsSource="{Binding Path=Debts}"
+            ItemsSource="{Binding Path=DebtsCollection}"
             SelectedItem="{Binding Path=CurrentDebtor}"
             SelectedIndex="{Binding Path=CurrentIndex}">
         </DataGrid>
