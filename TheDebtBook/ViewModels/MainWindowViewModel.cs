@@ -197,28 +197,6 @@ namespace TheDebtBook.ViewModels
             }
         }
 
-        private DelegateCommand? saveFileCommand;
-        public DelegateCommand SaveFileCommand =>
-            saveFileCommand ?? (saveFileCommand = new DelegateCommand(SaveFileCommandExecute, SaveFileCommandCanExecute)
-            .ObservesProperty(() => Debtors.Count));
-
-        private void SaveFileCommandExecute()
-        {
-            try
-            {
-                FileData.SaveFile(filePath, Debtors);
-                Dirty = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Unable to save file", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private bool SaveFileCommandCanExecute()
-        {
-            return (fileName != "") && (Debtors.Count > 0);
-        }
 
     }
 }
