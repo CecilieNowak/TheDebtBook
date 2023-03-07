@@ -52,9 +52,7 @@
             IsSynchronizedWithCurrentItem="True"
             ItemsSource="{Binding Path= Debtors}"
             SelectedItem="{Binding Path=CurrentDebtor}"
-            IsReadOnly="True"
-            CanUserAddRows="False"
-            CanUserDeleteRows="False">
+            IsReadOnly="True">
 
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseClick">
