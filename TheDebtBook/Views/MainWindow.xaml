@@ -8,13 +8,14 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="MainWindow" Height="450" Width="700">
+        Title="The Debt Book" Height="450" Width="700"
+        Background="{StaticResource ResourceKey=BackgroundBrush}"
+        >
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" Command="{Binding NewFileCommand}"/>
                 <MenuItem Header="_Open" Command="{Binding OpenFileCommand}"/>
-                <MenuItem Header="_Save" Command="{Binding SaveFileCommand}"/>
                 <MenuItem Header="_Save as" Command="{Binding SaveAsCommand}"/>
             </MenuItem>
         </Menu>

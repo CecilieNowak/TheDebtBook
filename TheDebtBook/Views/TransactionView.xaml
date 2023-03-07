@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-       xmlns:mwwm="http://prismlibrary.com/"
+        xmlns:mwwm="http://prismlibrary.com/"
         xmlns:local="clr-namespace:TheDebtBook.ViewModels"
         mc:Ignorable="d"
         mwwm:ViewModelLocator.AutoWireViewModel="true"
-        
-        Title="TransactionView" Height="450" Width="800">
+        Title="Transactions" Height="450" Width="800"
+        Background="{StaticResource ResourceKey=BackgroundBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
