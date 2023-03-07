@@ -8,8 +8,8 @@ using Prism.Commands;
 using Prism.Mvvm;
 using TheDebtBook.Views;
 using TheDebtBook.Models;
-
-
+using System.IO;
+using TheDebtBook.Data;
 
 namespace TheDebtBook.ViewModels
 {
@@ -18,6 +18,7 @@ namespace TheDebtBook.ViewModels
     /// </summary>
     public class MainWindowViewModel : BindableBase
     {
+        private string filePath = "";
         public MainWindowViewModel()
         {
 
@@ -95,5 +96,98 @@ namespace TheDebtBook.ViewModels
                 
             }
         }
+
+        private DelegateCommand? saveAsCommand;
+
+        public DelegateCommand SaveAsCommand =>
+            saveAsCommand ?? (saveAsCommand = new DelegateCommand(SaveAsCommandExecute));
+
+        void SaveAsCommandExecute()
+        {
+            SaveFileDialog dlg = new SaveFileDialog
+            {
+                //Sets the filetype 
+                Filter = "The debt book documents|*.deb|All Files|*.*",
+                DefaultExt = "deb"
+            };
+
+            if (filePath == "")
+                dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            else
+                dlg.InitialDirectory = Path.GetDirectoryName(filePath);
+
+            if (dlg.ShowDialog(App.Current.MainWindow) == true)
+            {
+                filePath = dlg.FileName;
+                Filename = Path.GetFileName(filePath);
+
+                try
+                {
+                    FileData.SaveFile(filePath, Debtors);
+                    Dirty = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Unable to save file", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private DelegateCommand? openFileCommand;
+
+        public DelegateCommand OpenFileCommand =>
+            openFileCommand ?? (openFileCommand = new DelegateCommand(OpenFileCommandExecute));
+
+        void OpenFileCommandExecute()
+        {
+            var dialog = new OpenFileDialog
+            {
+                Filter = "The debt book documents|*.deb|All Files|*.*",
+                DefaultExt = "deb"
+            };
+            if (filePath == "")
+                dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            else
+                dialog.InitialDirectory = Path.GetDirectoryName(filePath);
+
+            if(dialog.ShowDialog(App.Current.MainWindow) == true)
+            {
+                filePath = dialog.FileName;
+                Filename = Path.GetFileName(filePath);
+                try
+                {
+                    Debtors = FileData.ReadFile(filePath);
+                    Dirty = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Unable to open file", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private DelegateCommand? saveFileCommand;
+        public DelegateCommand SaveFileCommand =>
+            saveFileCommand ?? (saveFileCommand = new DelegateCommand(SaveFileCommandExecute, SaveFileCommandCanExecute)
+            .ObservesProperty(() => Debtors.Count));
+
+        private void SaveFileCommandExecute()
+        {
+            try
+            {
+                FileData.SaveFile(filePath, Debtors);
+                Dirty = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Unable to save file", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private bool SaveFileCommandCanExecute()
+        {
+            return (fileName != "") && (Debtors.Count > 0);
+        }
+
     }
 }
