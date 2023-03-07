@@ -48,7 +48,16 @@
             Grid.Column="0"
             Grid.Row="1"
             Margin="10"
-            IsSynchronizedWithCurrentItem="True">
+            IsSynchronizedWithCurrentItem="True"
+            ItemsSource="{Binding Path= Debtors}"
+            SelectedItem="{Binding Path=CurrentDebtor}"
+            IsReadOnly="True"
+            >
+
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Name" Width ="70" Binding="{Binding Name}"/>
+            <DataGridTextColumn Header="Debt" Width="70" Binding="{Binding TotalDebt}"/>
+        </DataGrid.Columns>
         </DataGrid>
 
 

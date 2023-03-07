@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,21 +11,35 @@ namespace TheDebtBook.Models
 {
     public class Debtor : BindableBase
     {
+        private ObservableCollection<Debt> _transactionDebts;
         private string _name;
         private int _value;
         private int _totalDebt;
+
         
         public Debtor()
         {
-
+            _transactionDebts = new ObservableCollection<Debt>();
 
         }
 
-        public Debtor(string name, int value, int totalDebt)
+        public Debtor(ObservableCollection<Debt> transactionDebts, string name, int value, int totalDebt)
         {
+            _transactionDebts = transactionDebts;
             _name = name;
             _totalDebt = totalDebt;
             _value = value;
+        }
+
+        public ObservableCollection<Debt> TransactionDebts
+        {
+            get { return _transactionDebts;}
+            set { SetProperty(ref _transactionDebts, value); }
+        }
+
+        public Debtor? Clone()
+        {
+            return this.MemberwiseClone() as Debtor;
         }
 
         public string Name
@@ -47,5 +62,7 @@ namespace TheDebtBook.Models
             set { SetProperty(ref _totalDebt, value); }
 
         }
+
+
     }
 }

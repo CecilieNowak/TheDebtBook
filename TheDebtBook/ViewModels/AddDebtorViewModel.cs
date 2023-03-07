@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using Prism.Commands;
 using Prism.Mvvm;
 using TheDebtBook.Models;
 
@@ -23,6 +25,23 @@ namespace TheDebtBook.ViewModels
             {
                 SetProperty(ref _currentDebtor, value);
             }
+        }
+
+        private DelegateCommand saveButtonCommand;
+
+        public DelegateCommand SaveButtonCommand =>
+            saveButtonCommand ?? (saveButtonCommand = new DelegateCommand(ExecuteSaveButtonCommand, canSaveButtonCommand)
+                .ObservesProperty(() => CurrentDebtor.Name).ObservesProperty(() => CurrentDebtor.Value));
+
+        bool canSaveButtonCommand()
+        {
+            return ValidInput;
+        }
+
+        void ExecuteSaveButtonCommand()
+        {
+            CurrentDebtor.TransactionDebts.Add(new Debt() {DebtValue = CurrentDebtor.Value,Date = DateTime.Now.ToShortDateString()});
+            CurrentDebtor.TotalDebt = CurrentDebtor.TransactionDebts.Sum(x => x.DebtValue);
         }
 
         public bool ValidInput

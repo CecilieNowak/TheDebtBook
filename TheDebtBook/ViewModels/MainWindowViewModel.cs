@@ -21,19 +21,28 @@ namespace TheDebtBook.ViewModels
         private string filePath = "";
         public MainWindowViewModel()
         {
-
+            _debtors = new ObservableCollection<Debtor>();
         }
 
-        ObservableCollection<Debtor> _debtors;
+        private Debtor _currentDebtor;
+        private ObservableCollection<Debtor> _debtors;
 
         public ObservableCollection<Debtor> Debtors
         {
             get { return _debtors; }
+            set { SetProperty(ref _debtors, value); }
+        }
+
+        public Debtor CurrentDebtor
+        {
+            get { return _currentDebtor; }
             set
             {
-                SetProperty(ref _debtors, value);
+                SetProperty(ref _currentDebtor, value);
+
             }
         }
+
 
         string fileName = "";
         public string Filename
@@ -73,9 +82,31 @@ namespace TheDebtBook.ViewModels
             };
             if (dialog.ShowDialog() == true)
             {
-                //_debtors.Add(addNewDebtor);
-                //_currentDebtor = addNewDebtor;
-                MessageBox.Show("vre");
+               _debtors.Add(addNewDebtor);
+               _currentDebtor = addNewDebtor;
+               
+            }
+        }
+
+        private DelegateCommand? showDebtCommand;
+
+        public DelegateCommand? ShowDebtCommand =>
+            showDebtCommand ?? (showDebtCommand = new DelegateCommand(ExecuteShowDebtCommand));
+
+        void ExecuteShowDebtCommand()
+        {
+            var localDebtor = CurrentDebtor.Clone();
+            var vm = new TransactionViewModel(localDebtor);
+
+            var dialog = new TransactionView()
+            {
+                DataContext = vm
+
+            };
+            if (dialog.ShowDialog() == true)
+            {
+                _currentDebtor.TotalDebt = localDebtor.TotalDebt;
+                _currentDebtor.TransactionDebts = localDebtor.TransactionDebts;
             }
         }
 
