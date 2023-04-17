@@ -35,11 +35,14 @@ namespace TheDebtBook.Views
             {
                 MessageBox.Show("Enter a name and a debt");
             }
+            
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
+
+       
     }
 }

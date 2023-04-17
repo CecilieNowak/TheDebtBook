@@ -27,8 +27,9 @@ namespace TheDebtBook.Models
         {
             _transactionDebts = transactionDebts;
             _name = name;
-            _totalDebt = totalDebt;
             _value = value;
+            _totalDebt = totalDebt;
+
         }
 
         public ObservableCollection<Debt> TransactionDebts
@@ -37,10 +38,11 @@ namespace TheDebtBook.Models
             set { SetProperty(ref _transactionDebts, value); }
         }
 
-        public Debtor? Clone()
+        public Debtor Clone()
         {
-            return this.MemberwiseClone() as Debtor;
+            return (Debtor)MemberwiseClone();
         }
+
 
         public string Name
         {

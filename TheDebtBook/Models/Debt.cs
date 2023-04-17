@@ -10,7 +10,7 @@ namespace TheDebtBook.Models
 {
     public class Debt : BindableBase
     {
-        private int _value;
+        private int _debtValue;
         private string _date;
 
         public Debt()
@@ -18,16 +18,16 @@ namespace TheDebtBook.Models
             _date = DateTime.Now.ToShortDateString();
         }
 
-        public Debt (int value, string date, int debtValue)
+        public Debt (int value, string date)
         {
-            _value = value;
+            _debtValue = value;
             _date = date;
         }
 
         public int DebtValue
         {
-            get { return _value; }
-            set { SetProperty(ref _value, value); }
+            get { return _debtValue; }
+            set { SetProperty(ref _debtValue, value); }
         }
 
         public string Date

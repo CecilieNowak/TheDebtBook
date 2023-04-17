@@ -44,11 +44,6 @@ namespace TheDebtBook.ViewModels
             CurrentDebtor.TotalDebt = CurrentDebtor.TransactionDebts.Sum(x => x.DebtValue);
         }
 
-        bool CanSaveButtonCommand()
-        {
-            return ValidInput;
-        }
-
 
         private DelegateCommand? _cancelButtonCommand;
         public DelegateCommand? CancelButtonCommand =>
@@ -56,25 +51,10 @@ namespace TheDebtBook.ViewModels
 
         private void CancelButtonCommandExecute()
         {
-            // Behind code
+
         }
 
-        public bool ValidInput
-        {
-            get
-            {
-                bool validInput = true; //TODO Behøver den sættes til true?
-                if (string.IsNullOrWhiteSpace(CurrentDebtor.Name))
-                {
-                    validInput = false;
-                }
+        public bool ValidInput => !string.IsNullOrWhiteSpace(CurrentDebtor.Name) && !string.IsNullOrWhiteSpace(Convert.ToString(CurrentDebtor.Value));
 
-                if (string.IsNullOrWhiteSpace(Convert.ToString(CurrentDebtor.Value)))
-                {
-                    validInput = false;
-                }
-                return validInput;
-            }
-        }
     }
 }

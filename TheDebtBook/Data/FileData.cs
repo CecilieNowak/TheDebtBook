@@ -12,23 +12,21 @@ namespace TheDebtBook.Data
 {
     public class FileData
     {
+       
         public static ObservableCollection<Debtor> ReadFile(string filename)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Debtor));
-            TextReader reader = new StreamReader(filename);
-
-            var debtors = (ObservableCollection<Debtor>)serializer.Deserialize(reader);
-            reader.Close();
-            return debtors;
+            using var reader = new StreamReader(filename);
+            var serializer = new XmlSerializer(typeof(ObservableCollection<Debtor>));
+            return (ObservableCollection<Debtor>)serializer.Deserialize(reader);
         }
 
         public static void SaveFile(string filename, ObservableCollection<Debtor> debtors)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Debtor));
-            TextWriter writer = new StreamWriter(filename);
-
+            using var writer = new StreamWriter(filename);
+            var serializer = new XmlSerializer(typeof(ObservableCollection<Debtor>));
             serializer.Serialize(writer, debtors);
-            writer.Close();
+
         }
+
     }
 }

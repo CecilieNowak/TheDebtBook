@@ -139,7 +139,6 @@ namespace TheDebtBook.ViewModels
         {
             SaveFileDialog dlg = new SaveFileDialog
             {
-                //Sets the filetype 
                 Filter = "The debt book documents|*.deb|All Files|*.*",
                 DefaultExt = "deb"
             };
